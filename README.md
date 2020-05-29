@@ -22,8 +22,6 @@ The example initializes the Wi-Fi device and waits on a button (SW2) press befor
 
 This example uses the board's default configuration. See the kit user guide to ensure that the board is configured correctly.
 
-**Note**: The PSoC 6 BLE Pioneer Kit (CY8CKIT-062-BLE) and the PSoC 6 WiFi-BT Pioneer Kit (CY8CKIT-062-WIFI-BT) ship with KitProg2 installed. ModusToolbox software requires KitProg3. Before using this code example, make sure that the board is upgraded to KitProg3. The tool and instructions are available in the [Firmware Loader](https://github.com/cypresssemiconductorco/Firmware-loader) GitHub repository. If you do not upgrade, you will see an error like "unable to find CMSIS-DAP device" or "KitProg firmware is out of date".
-
 ## Software Setup
 
 Install a terminal emulator if you don't have one. Instructions in this document use [Tera Term](https://ttssh2.osdn.jp/index.html.en).
@@ -46,11 +44,11 @@ This example requires no additional software or tools.
 
 3. In the **Project Creator - Choose Board Support Package (BSP)** dialog, choose the example.
 
-4. Optionally, update the **Application Name** and **Location** fields with the application name and local path where the application is created.
+4. Optionally, update the **Application Name:** and **Location** fields with the application name and local path where the application is created.
 
 5. Click **Create** to complete the application creation process.
 
-   For more details, see the Eclipse IDE for ModusToolbox User Guide: *{ModusToolbox install directory}/ide_{version}/docs/mt_ide_user_guide.pdf*.
+For more details, see the Eclipse IDE for ModusToolbox User Guide: *{ModusToolbox install directory}/ide_{version}/docs/mt_ide_user_guide.pdf*.
 
 ### In Command-line Interface (CLI):
 
@@ -58,7 +56,7 @@ This example requires no additional software or tools.
 
 2. Open a CLI terminal and navigate to the application folder. 
 
-   On Linux and macOS, you can use any terminal application. On Windows, navigate to the modus-shell directory (*{ModusToolbox install directory}/tools_\<version>/modus-shell*) and run *Cygwin.bat*.
+On Linux and macOS, you can use any terminal application. On Windows, navigate to the modus-shell directory (*{ModusToolbox install directory}/tools_\<version>/modus-shell*) and run *Cygwin.bat*.
 
 3. Import the required libraries by executing the `make getlibs` command.
 
@@ -77,11 +75,11 @@ This example requires no additional software or tools.
 
 1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
 
-2. Connect to the WPS-enabled AP from your PC. Open the AP's configuration web page. Ensure that the *WPS* option is enabled. Ensure that the `WPS_MODE_CONFIG` macro matches the WPS configuration in the AP. This example has the push button mode enabled by default.
+2. Connect to the WPS-enabled AP from your PC. Open the AP's configuration web page. Ensure that the *WPS* option is enabled and note the WPS mode. 
 
-   If WPS PIN mode is configured in the AP, the PIN can be provided by the AP or by the Client (the PSoC 6 MCU device). If you use the PIN provided by the AP, the WPS connection will be specific to that AP alone. On the other hand, if you use the Client PIN, it can be used to connect to any WPS-enabled AP. 
+3. Ensure that the `WPS_MODE_CONFIG` macro matches the WPS mode of the AP. The choices are `CY_WCM_WPS_PBC_MODE` (push-button mode) or `CY_WCM_WPS_PIN_MODE` (pin mode). The example uses push-button mode by default.
 
-3. To use the PIN provided by the AP, uncomment the macro `WPS_AP_PIN` in *wps_enrollee_task.h* and enter the PIN provided by the AP.
+   **Note**: In *WPS PIN MODE*, only client generated pin mode is supported by the example.
 
 4. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
 
@@ -99,11 +97,12 @@ This example requires no additional software or tools.
         ```
         make program TARGET=<BSP> TOOLCHAIN=<toolchain>
         ```
-        Example:
 
+        Example:
         ```
         make program TARGET=CY8CPROTO-062-4343W TOOLCHAIN=GCC_ARM
         ```
+
         **Note**:  Before building the application, ensure that the *deps* folder contains the BSP file (*TARGET_xxx.lib*) corresponding to the TARGET. Execute the `make getlibs` command to fetch the BSP contents before building the application.
 
 6. Press SW2 to start scanning for WPS-enabled APs.
@@ -115,25 +114,25 @@ This example requires no additional software or tools.
    
       2. If there is no button on the AP, click on the virtual button on the AP configuration web page to trigger a connection through WPS.
 
-      Figure 1 shows the sample output of successfully connecting to the AP through WPS.
+         Figure 1 shows the sample output of successfully connecting to the AP through WPS.
 
-      **Figure 1. WPS Connection to AP PBC Mode**
-      ![](images/figure1.png)
+         **Figure 1. WPS Connection to AP PBC Mode**
+            ![](images/figure1.png)
 
    ### WPS PIN Mode (Client PIN):
-      1. The device displays a PIN generated on the serial terminal after the button press.
+      1. The device generates a PIN and displays it on the serial terminal after the button press.
 
       2. Select Client PIN mode in the AP, and enter the PIN (displayed on the serial terminal) in the AP configuration web page. 
 
-      A sample output of successfully connecting to the AP through WPS is provided in Figure 2.
+          A sample output of successfully connecting to the AP through WPS is provided in Figure 2.
 
-      **Figure 2. WPS Connection to AP PIN Mode**
-      ![](images/figure2.png)
+          **Figure 2. WPS Connection to AP PIN Mode (Client PIN)**
+            ![](images/figure2.png)
 
-8. If the device disconnects from the AP due to the AP being switched off or the device going outside the range of the AP, the device waits for the AP to be powered on or come within its range after which it reconnects automatically. A sample output is shown in Figure 3.
+10. If the device disconnects from the AP due to the AP being switched off or the device going outside the range of the AP, the device waits for the AP to be powered on or come within its range after which it reconnects automatically. A sample output is shown in Figure 3.
 
    **Figure 3. Disconnect and Reconnect to AP**
-   ![](images/figure3.png)
+      ![](images/figure3.png)
 
 ## Debugging
 
@@ -157,10 +156,7 @@ After receiving the task notification depending on the value of `WPS_MODE_CONFIG
 
 1. **`WPS_MODE_CONFIG` is set as `CY_WCM_WPS_PBC_MODE` (Default)**: *WPS Push-button mode* is selected as the WPS configuration mode. The device prompts you to press the WPS button on the AP as explained in [WPS PBC Mode](#wps-pbc-mode). 
 
-2. **`WPS_MODE_CONFIG` is set as `CY_WCM_WPS_PIN_MODE`**: *WPS PIN mode* is selected as the WPS configuration mode. In this configuration, the PIN can be provided by the AP or by the client.
-    - **(Default) Client PIN**: The device generates a PIN and displays it on the serial terminal. You should enter this PIN in the AP configuration web page as explained in [WPS PIN Mode (Client PIN)](#wps-pin-mode-(client-pin)).
-
-    - **AP PIN**: The device uses the PIN provided by the AP as explained in [Operation](#operation).
+2. **`WPS_MODE_CONFIG` is set as `CY_WCM_WPS_PIN_MODE`**: *WPS PIN mode* is selected as the WPS configuration mode. In this configuration, the device generates a PIN and displays it on the serial terminal. You should enter this PIN in the AP configuration web page as explained in [WPS PIN Mode (Client PIN)](#wps-pin-mode-(client-pin)).
 
 The task starts a WPS Enrollee using the device details in the `enrollee_details` structure in *wps_enrollee_task.c*. The WPS Enrollee function provided by the WCM scans for WPS APs for 120 seconds. During the scan, it attempts to get the credentials for the AP through WPS. After successfully obtaining the credentials, it connects to the AP and again waits for task notification. If SW2 is pressed again, the example disconnects from the AP before starting WPS Enrollee.
 
@@ -170,9 +166,9 @@ The task starts a WPS Enrollee using the device details in the `enrollee_details
 
 | Resource  |  Alias/Object     |    Purpose     |
 | :------- | :------------    | :------------ |
-| UART (HAL)|cy_retarget_io_uart_obj| UART HAL object used by Retarget-IO for Debug UART port  |
-| GPIO (HAL)    | CYBSP_USER_LED         | User LED                  |
-| GPIO (HAL)    | CYBSP_USER_BTN         | User Button                  |
+| UART (HAL)|cy_retarget_io_uart_obj| UART HAL object used by Retarget-IO for Debug UART port.  |
+| GPIO (HAL)    | CYBSP_USER_LED         | Turns on when there is an unrecoverable error.|
+| GPIO (HAL)    | CYBSP_USER_BTN         | Used to notify the application to start scanning for WPS APs in the configured WPS mode.|
 
 
 ## Related Resources
@@ -213,16 +209,17 @@ For PSoC 6 MCU devices, see [How to Design with PSoC 6 MCU - KBA223067](https://
 
 Document Title: CE230105 - AnyCloud Example: WPS Enrollee
 
-| Version | Description of Change |
-| ------- | --------------------- |
-| 1.0.0   | New code example      |
+| Version | Description of Change                                        |
+| ------- | ------------------------------------------------------------ |
+| 1.0.0   | New code example                                             |
+| 1.1.0   | Minor changes in Makefile and source files<br>Removed support for AP provided pin in WPS PIN mode |
 
 ------
 
 
 All other trademarks or registered trademarks referenced herein are the property of their respective owners.
 
-![Banner](images/footer_banner.png)
+![banner](images/footer_banner.png)
 
 -------------------------------------------------------------------------------
 

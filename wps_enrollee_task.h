@@ -67,12 +67,6 @@
  */
 #define WPS_MODE_CONFIG                     CY_WCM_WPS_PBC_MODE
 
-/* The PIN used by WPS during exchange of security credentials. The PIN is
- * specified by the the AP. Uncomment the line to use the AP specified pin in
- * the example.
- */
-// #define WPS_AP_PIN                          "12345678"
-
 /* The value of this macro specifies the maximum number of Wi-Fi networks the
  * device can join through WPS in one call to cy_wcm_wps_enrollee. This value is
  * 2 for dual band AP. Note that the device can obtain Wi-Fi credentials of only
@@ -103,7 +97,6 @@
 
 #define APP_INFO( x )                       do { printf("Info: "); printf x;} while(0);
 #define ERR_INFO( x )                       do { printf("Error: "); printf x;} while(0);
-#define CHECK_RESULT( x )                   do { if(CY_RSLT_SUCCESS != x) { CY_ASSERT(0); } } while(0);
 
 #define SECURITY_OPEN                       "OPEN"
 #define SECURITY_WEP_PSK                    "WEP-PSK"
@@ -128,17 +121,15 @@
  ******************************************************************************/
 /* WPS Enrollee task handle */
 extern TaskHandle_t wps_enrollee_task_handle;
+extern bool is_retarget_io_initialized;
+extern bool is_led_initialized;
 
 
 /*******************************************************************************
  * Function Prototypes
  ******************************************************************************/
 void wps_enrollee_task(void* arg);
-void network_event_callback(cy_wcm_event_t event, cy_wcm_event_data_t *event_data);
-cy_rslt_t wifi_connect(cy_wcm_connect_params_t *connect_param, cy_wcm_ip_address_t *ip_addr);
-void gpio_interrupt_handler(void *handler_arg, cyhal_gpio_event_t event);
 void error_handler(cy_rslt_t result, char* message);
-void print_wps_ap_credential(cy_wcm_wps_credential_t *result);
 
 #endif /*SOURCE_WPS_ENROLLEE_TASK_H_*/
 
