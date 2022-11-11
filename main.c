@@ -7,7 +7,7 @@
 * Related Document: See Readme.md
 *
 ********************************************************************************
-* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2022, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -44,7 +44,7 @@
 #include "cy_retarget_io.h"
 
 /* FreeRTOS header file */
-#include <FreeRTOS.h>
+#include <FreeRTOS.h> 
 #include <task.h>
 
 /* Task header files */
@@ -107,7 +107,7 @@ int main()
     printf("\x1b[2J\x1b[;H");
 
     printf("********************************************************\n"
-           "CE230105 AnyCloud Example: WPS Enrollee\n"
+           "CE230105 WiFi Example: WPS Enrollee\n"
            "********************************************************\n");
 
     /* Create the task. */

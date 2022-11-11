@@ -9,7 +9,7 @@
 * Related Document: See README.md
 *
 ********************************************************************************
-* Copyright 2020-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2020-2022, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -46,7 +46,8 @@
  ******************************************************************************/
 #include "cyhal.h"
 #include "cybsp.h"
-#include "cy_lwip.h"
+/* IP address related header files (part of the lwIP TCP/IP stack). */
+#include "ip_addr.h"
 
 /* Wi-Fi Connection Manager includes */
 #include "cy_wcm.h"
@@ -87,9 +88,19 @@ const cy_wcm_wps_device_detail_t enrollee_details =
 
 static void network_event_callback(cy_wcm_event_t event, cy_wcm_event_data_t *event_data);
 static cy_rslt_t wifi_connect(cy_wcm_connect_params_t *connect_param, cy_wcm_ip_address_t *ip_addr);
-static void gpio_interrupt_handler(void *handler_arg, cyhal_gpio_event_t event);
+static void gpio_interrupt_handler(void *arg, cyhal_gpio_event_t event);
 static void print_wps_ap_credential(cy_wcm_wps_credential_t *result);
 
+/*******************************************************************************
+ * Callback Definitions
+ ******************************************************************************/
+
+/*This structure is used to initialize callback*/
+cyhal_gpio_callback_data_t cb_data =
+{
+    .callback = gpio_interrupt_handler,
+    .callback_arg = NULL
+};
 
 /*******************************************************************************
  * Function Definitions
@@ -139,7 +150,7 @@ void wps_enrollee_task(void *arg)
     error_handler(result, "Failed to initialize GPIO button.\n");
 
     /* Configure GPIO interrupt */
-    cyhal_gpio_register_callback(CYBSP_USER_BTN, gpio_interrupt_handler, NULL);
+    cyhal_gpio_register_callback(CYBSP_USER_BTN, &cb_data);
     cyhal_gpio_enable_event(CYBSP_USER_BTN, CYHAL_GPIO_IRQ_FALL, GPIO_INTERRUPT_PRIORITY, true);
 
     memset(credentials, 0, sizeof(credentials));
@@ -395,14 +406,14 @@ static void print_wps_ap_credential(cy_wcm_wps_credential_t *result)
  *  sends task notifications to the WPS Enrollee task to scan for WPS AP.
  *
  * Parameters:
- *  void *callback_arg : pointer to variable passed to the ISR
+ *  void *arg : pointer to variable passed to the ISR
  *  cyhal_gpio_event_t event : GPIO event type
  *
  * Return:
  *  None
  *
  ******************************************************************************/
-static void gpio_interrupt_handler(void *handler_arg, cyhal_gpio_event_t event)
+static void gpio_interrupt_handler(void *arg, cyhal_gpio_event_t event)
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
