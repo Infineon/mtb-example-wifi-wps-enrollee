@@ -38,7 +38,6 @@
 * of such system or application assumes all risk of such use and in doing
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
-
 #include "cybsp.h"
 #include "cyhal.h"
 #include "cy_retarget_io.h"
@@ -60,6 +59,7 @@
 #include "cy_serial_flash_qspi.h"
 #include "cycfg_qspi_memslot.h"
 #endif
+
 
 /*******************************************************************************
  * Global Variables

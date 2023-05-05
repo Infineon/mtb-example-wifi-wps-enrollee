@@ -6,7 +6,7 @@ The code example initializes the Wi-Fi device and waits on a button (SW2) press 
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-wifi-wps-enrollee)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDUiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNSIsIkRvYyBUaXRsZSI6IldpRmk6IFdQUyBlbnJvbGxlZSIsInJpZCI6InNkYWsiLCJEb2MgdmVyc2lvbiI6IjMuMS4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDUiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNSIsIkRvYyBUaXRsZSI6IldpRmk6IFdQUyBlbnJvbGxlZSIsInJpZCI6InNkYWsiLCJEb2MgdmVyc2lvbiI6IjMuMi4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
 
 ## Requirements
 
@@ -31,6 +31,7 @@ The code example initializes the Wi-Fi device and waits on a button (SW2) press 
 - [PSoC&trade; 62S3 Wi-Fi Bluetooth&reg; prototyping kit](https://www.infineon.com/CY8CPROTO-062S3-4343W) (`CY8CPROTO-062S3-4343W`)
 - [PSoC&trade; 64 "Secure Boot" Wi-Fi Bluetooth&reg; pioneer kit](https://www.infineon.com/CY8CKIT-064B0S2-4343W) (`CY8CKIT-064B0S2-4343W`)
 - [PSoC&trade; 62S2 evaluation kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-LAI-43439M2`,`CY8CEVAL-062S2-MUR-43439M2`)
+- [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; prototyping kit](https://www.infineon.com/CY8CPROTO-062S2-43439) (`CY8CPROTO-062S2-43439`)
 
 ## Hardware setup
 
@@ -293,6 +294,7 @@ Document Title: *CE230105 - WiFi: WPS enrollee*
  2.2.0   | Updated to FreeRTOS v10.3.1
  3.0.0   | Major Updated to support ModusToolbox&trade; software v3.0 and BSPs v4.X<br />This version is not backward compatible with previous versions of ModusToolbox&trade;
  3.1.0   | Added support for CY8CPROTO-062S3-4343W, CY8CKIT-064B0S2-4343W, CY8CEVAL-062S2-LAI-4373M2 ,CY8CEVAL-062S2-MUR-43439M2 and CY8CEVAL-062S2-LAI-43439M2
+ 3.2.0   | Added support for CY8CPROTO-062S2-43439
 
 ---------------------------------------------------------
 
