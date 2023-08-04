@@ -6,7 +6,7 @@ The code example initializes the Wi-Fi device and waits on a button (SW2) press 
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-wifi-wps-enrollee)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDUiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNSIsIkRvYyBUaXRsZSI6IldpRmk6IFdQUyBlbnJvbGxlZSIsInJpZCI6InNkYWsiLCJEb2MgdmVyc2lvbiI6IjMuMi4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzAxMDUiLCJTcGVjIE51bWJlciI6IjAwMi0zMDEwNSIsIkRvYyBUaXRsZSI6IldpRmk6IFdQUyBlbnJvbGxlZSIsInJpZCI6InNkYWsiLCJEb2MgdmVyc2lvbiI6IjMuMy4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
 
 ## Requirements
 
@@ -30,7 +30,7 @@ The code example initializes the Wi-Fi device and waits on a button (SW2) press 
 - [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; pioneer kit](https://www.infineon.com/CY8CKIT-062S2-43012) (`CY8CKIT-062S2-43012`)
 - [PSoC&trade; 62S3 Wi-Fi Bluetooth&reg; prototyping kit](https://www.infineon.com/CY8CPROTO-062S3-4343W) (`CY8CPROTO-062S3-4343W`)
 - [PSoC&trade; 64 "Secure Boot" Wi-Fi Bluetooth&reg; pioneer kit](https://www.infineon.com/CY8CKIT-064B0S2-4343W) (`CY8CKIT-064B0S2-4343W`)
-- [PSoC&trade; 62S2 evaluation kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-LAI-43439M2`,`CY8CEVAL-062S2-MUR-43439M2`)
+- [PSoC&trade; 62S2 evaluation kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-LAI-43439M2`,`CY8CEVAL-062S2-MUR-43439M2`,`CY8CEVAL-062S2-MUR-4373EM2`,`CY8CEVAL-062S2-MUR-4373M2`)
 - [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; prototyping kit](https://www.infineon.com/CY8CPROTO-062S2-43439) (`CY8CPROTO-062S2-43439`)
 
 ## Hardware setup
@@ -295,7 +295,7 @@ Document Title: *CE230105 - WiFi: WPS enrollee*
  3.0.0   | Major Updated to support ModusToolbox&trade; software v3.0 and BSPs v4.X<br />This version is not backward compatible with previous versions of ModusToolbox&trade;
  3.1.0   | Added support for CY8CPROTO-062S3-4343W, CY8CKIT-064B0S2-4343W, CY8CEVAL-062S2-LAI-4373M2 ,CY8CEVAL-062S2-MUR-43439M2 and CY8CEVAL-062S2-LAI-43439M2
  3.2.0   | Added support for CY8CPROTO-062S2-43439
-
+ 3.3.0   | Added support for CY8CEVAL-062S2-MUR-4373EM2 and CY8CEVAL-062S2-MUR-4373M2
 ---------------------------------------------------------
 
 © Cypress Semiconductor Corporation, 2020-2023. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress").  This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide.  Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights.  If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress’s patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products.  Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
